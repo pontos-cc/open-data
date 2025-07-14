@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/ExchangeRate",
+  "definitions": {
+    "ExchangeRate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "result": {
+          "type": "string"
+        },
+        "documentation": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "terms_of_use": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "time_last_update_unix": {
+          "type": "integer"
+        },
+        "time_last_update_utc": {
+          "type": "string"
+        },
+        "time_next_update_unix": {
+          "type": "integer"
+        },
+        "time_next_update_utc": {
+          "type": "string"
+        },
+        "base_code": {
+          "type": "string"
+        },
+        "conversion_rates": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "base_code",
+        "conversion_rates",
+        "documentation",
+        "result",
+        "terms_of_use",
+        "time_last_update_unix",
+        "time_last_update_utc",
+        "time_next_update_unix",
+        "time_next_update_utc"
+      ],
+      "title": "ExchangeRate",
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    }
+  }
+}
