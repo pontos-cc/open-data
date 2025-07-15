@@ -1,0 +1,38 @@
+name: Build API on push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - run: npm ci
+
+      - name: Run API builder
+        run: npm run build:api
+
+      - name: Commit and push changes in data/ (with [skip ci])
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Check for changes only in data/
+          if git diff --quiet HEAD -- data/; then
+            echo "No changes in data/, skipping commit."
+          else
+            git add data/
+            git commit -m "chore: update API output [skip ci]"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
