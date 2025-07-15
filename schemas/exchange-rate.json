@@ -6,39 +6,22 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "result": {
-          "type": "string"
-        },
-        "documentation": {
-          "type": "string",
-          "format": "uri",
-          "qt-uri-protocols": [
-            "https"
-          ]
-        },
-        "terms_of_use": {
-          "type": "string",
-          "format": "uri",
-          "qt-uri-protocols": [
-            "https"
-          ]
-        },
-        "time_last_update_unix": {
+        "timeLastUpdateUnix": {
           "type": "integer"
         },
-        "time_last_update_utc": {
+        "timeLastUpdateUtc": {
           "type": "string"
         },
-        "time_next_update_unix": {
+        "timeNextUpdateUnix": {
           "type": "integer"
         },
-        "time_next_update_utc": {
+        "timeNextUpdateUtc": {
           "type": "string"
         },
-        "base_code": {
+        "baseCode": {
           "type": "string"
         },
-        "conversion_rates": {
+        "conversionRates": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -46,15 +29,12 @@
         }
       },
       "required": [
-        "base_code",
-        "conversion_rates",
-        "documentation",
-        "result",
-        "terms_of_use",
-        "time_last_update_unix",
-        "time_last_update_utc",
-        "time_next_update_unix",
-        "time_next_update_utc"
+        "baseCode",
+        "conversionRates",
+        "timeLastUpdateUnix",
+        "timeLastUpdateUtc",
+        "timeNextUpdateUnix",
+        "timeNextUpdateUtc"
       ],
       "title": "ExchangeRate",
       "$schema": "http://json-schema.org/draft-07/schema#"
