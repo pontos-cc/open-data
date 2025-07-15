@@ -8,20 +8,25 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-    env:
-      EXCHANGE_API_KEY: ${{ secrets.EXCHANGE_API_KEY }}
-      BASE_CURRENCIES: ${{ secrets.BASE_CURRENCIES }}
+
     steps:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-
       - run: npm ci
 
+      - name: Create .env file
+        run: |
+          echo EXCHANGE_API_KEY=${{ secrets.EXCHANGE_API_KEY }} >> .env
+          echo BASE_CURRENCIES=${{ vars.BASE_CURRENCIES }} >> .env
+      
       - name: Run exchange rate generator
         run: npm run build:exchange-rates
+      
+      - name: Remove .env file
+        run: rm -f .env
 
       - name: Commit and push updated exchange rate data
         run: |

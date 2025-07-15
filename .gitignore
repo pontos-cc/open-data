@@ -21,6 +21,3 @@ Thumbs.db
 # IDEs and editors
 .vscode/
 .idea/
-
-# Local data output (optional)
-data/exchange-rates/
